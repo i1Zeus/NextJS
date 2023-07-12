@@ -38,10 +38,10 @@ export function TodoItem({
         )}
       </span>
       <button
-        className="bg-transparent border border-light-300 rounded-md px-2 py-1 hover:bg-slate-400 hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
+        className="bg-transparent border border-light-300 text-sm rounded-full px-2 py-1 hover:bg-slate-400 hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
         onClick={(e) => deleteTodo(id)}
       >
-        delete
+        X
       </button>
     </li>
   );
