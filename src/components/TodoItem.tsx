@@ -1,5 +1,5 @@
 type TodoItemProps = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   completed: boolean;
@@ -7,20 +7,14 @@ type TodoItemProps = {
 
 export function TodoItem({ id, title, description, completed }: TodoItemProps) {
   return (
-    <li className="mb-4">
-      <h2 className="text-xl">{title}</h2>
-      <p className="text-gray-400">{description}</p>
-      <div className="flex justify-between items-center">
-        <span className="text-gray-400">{completed ? "Done" : "Not done"}</span>
-        <button
-          className="bg-transparent border border-light-300 rounded-md px-2 py-1 hover:bg-slate-400 hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
-          onClick={() => {
-            alert(`Delete todo with id ${id}`);
-          }}
-        >
-          Delete
-        </button>
-      </div>
+    <li className="flex gap-1 items-center">
+      <input id={id} type="checkbox" className="cursor-pointer peer" />
+      <label
+        htmlFor={id}
+        className="cursor-pointer peer-checked:text-slate-400"
+      >
+        {title}
+      </label>
     </li>
   );
 }
