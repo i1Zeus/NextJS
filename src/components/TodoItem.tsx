@@ -1,19 +1,33 @@
+"use client";
+
 type TodoItemProps = {
   id: string;
   title: string;
   description: string | null;
   completed: boolean;
+  toggleTodo: (id: string, completed: boolean) => void;
 };
 
-export function TodoItem({ id, title, description, completed }: TodoItemProps) {
+export function TodoItem({
+  id,
+  title,
+  description,
+  completed,
+  toggleTodo,
+}: TodoItemProps) {
   return (
     <li className="flex gap-1 items-center">
       <input
         id={id}
         type="checkbox"
         className="cursor-pointer peer accent-slate-700"
+        defaultChecked={completed}
+        onChange={(e) => toggleTodo(id, e.target.checked)}
       />
-      <label htmlFor={id} className="cursor-pointer peer-checked:line-through peer-checked:text-slate-500">
+      <label
+        htmlFor={id}
+        className="cursor-pointer peer-checked:line-through peer-checked:text-slate-500"
+      >
         {title}
       </label>
       <span className="peer-checked:hidden">
@@ -21,6 +35,7 @@ export function TodoItem({ id, title, description, completed }: TodoItemProps) {
           <span className="text-sm text-slate-500">({description})</span>
         )}
       </span>
+      
     </li>
   );
 }
