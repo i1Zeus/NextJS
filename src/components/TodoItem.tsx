@@ -13,7 +13,7 @@ export function TodoItem({ id, title, description, completed }: TodoItemProps) {
         type="checkbox"
         className="cursor-pointer peer accent-slate-700"
       />
-      <label htmlFor={id} className="cursor-pointer peer-checked:line-through">
+      <label htmlFor={id} className="cursor-pointer peer-checked:line-through peer-checked:text-slate-500">
         {title}
       </label>
       <span className="peer-checked:hidden">
