@@ -17,6 +17,13 @@ export default async function Home() {
     });
   }
 
+  async function deleteTodo(id: string) {
+    "use server";
+    await prisma.todo.delete({
+      where: { id },
+    });
+  }
+
   return (
     <main>
       <header className="text-2xl flex justify-between items-center mb-4">
@@ -30,7 +37,12 @@ export default async function Home() {
       </header>
       <ul className="pl-4">
         {todos.map((todo) => (
-          <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo} />
+          <TodoItem
+            key={todo.id}
+            {...todo}
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+          />
         ))}
       </ul>
     </main>

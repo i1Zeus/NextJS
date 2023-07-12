@@ -6,6 +6,7 @@ type TodoItemProps = {
   description: string | null;
   completed: boolean;
   toggleTodo: (id: string, completed: boolean) => void;
+  deleteTodo: (id: string) => void;
 };
 
 export function TodoItem({
@@ -14,6 +15,7 @@ export function TodoItem({
   description,
   completed,
   toggleTodo,
+  deleteTodo,
 }: TodoItemProps) {
   return (
     <li className="flex gap-1 items-center">
@@ -35,7 +37,12 @@ export function TodoItem({
           <span className="text-sm text-slate-500">({description})</span>
         )}
       </span>
-      
+      <button
+        className="bg-transparent border border-light-300 rounded-md px-2 py-1 hover:bg-slate-400 hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
+        onClick={(e) => deleteTodo(id)}
+      >
+        delete
+      </button>
     </li>
   );
 }
